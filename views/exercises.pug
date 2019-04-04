@@ -1,0 +1,33 @@
+//Exercise log.
+doctype html
+html(lang='en')
+    include /head.pug
+    body
+        if object.exercise.length && object._id !== "error"
+            .container
+                .row.align-items-center
+                    .col-md-8.order-md-1.text-center.text-md-left.pr-md-5
+                      h2.mt-3.text-center Exercise Log
+                        p.text-right for   #{object._id}
+                          table.table.table-bordered
+                            thead
+                                tr
+                                    th(scope="col")
+                                    th(scope="col") Date
+                                    th(scope="col") Type
+                                    th(scope="col") Minutes
+                                each exercise, index in object.exercise
+                                  tr
+                                    td #{index + 1}
+                                    td #{exercise.date.getFullYear()}-#{exercise.date.getMonth()+1}-#{exercise.date.getDate()}
+                                    td #{exercise.description}
+                                    td #{exercise.duration}
+
+        else if object._id == "error"
+          .container
+            h1.mt-3.text-center Error!!   #{object.exercise[0]}
+        else
+          .container
+            h1.mt-3.text-center No data was found!!
+            
+    include /foot.pug

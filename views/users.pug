@@ -1,0 +1,25 @@
+// users list pug
+doctype html
+html(lang='en')
+    include /head.pug
+    body
+        if users.length
+            .container
+                .row.align-items-center
+                    .col-md-6.order-md-1.text-center.text-md-left.pr-md-5
+                        h2.text-center.mt-3 Username and UserId
+                        table.table.table-bordered
+                            thead
+                                tr
+                                    th(scope="col")
+                                    th(scope="col") Username
+                                    th(scope="col") UserId
+                                each user, index in users
+                                  tr
+                                    td #{index + 1}                                  
+                                    td #{user.username}
+                                    td #{user._id}
+                                    
+
+
+    include /foot.pug
